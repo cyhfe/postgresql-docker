@@ -3,6 +3,10 @@
 datatype: [https://www.postgresql.org/docs/current/datatype.html](https://www.postgresql.org/docs/current/datatype.html)
 
 ```bash
+# compose
+docker-compose -p -d pg up
+# 查看 ip
+docker inspect <id> | grep IPAddress
 # 运行 docker 镜像
 docker run --name postgres -e POSTGRES_PASSWORD=admin -d postgres
 # 进入 bash 环境
