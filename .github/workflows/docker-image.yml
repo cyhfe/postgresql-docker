@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          sudo docker-compose -p pg --build up -d
+          sudo docker-compose -p pg up --build -d
         env:
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PW: ${{ secrets.POSTGRES_PW }}
