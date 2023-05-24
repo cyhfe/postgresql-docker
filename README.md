@@ -42,6 +42,7 @@ VALUES ('wang', '1988-01-10')
 \d person
 
 # sql
+SELECT * From 'User'
 /g
 
 ```
