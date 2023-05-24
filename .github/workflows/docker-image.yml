@@ -5,23 +5,14 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-
 jobs:
   build:
     runs-on: self-hosted
-
-    env:
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PW }}
-      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-      PGADMIN_MAIL: ${{ secrets.PGADMIN_MAIL }}
-      PGADMIN_PW: ${{ secrets.PGADMIN_PW }}
 
     steps:
       - uses: actions/checkout@v3
 
       - name: compsoe up
+        env:
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PW }}
         run: sudo docker-compose -p pg up --build -d
-
-      - name: log
-        run: sudo docker logs postgres
