@@ -9,15 +9,13 @@ on:
 jobs:
   build:
     runs-on: self-hosted
-
-    env:
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_PW: ${{ secrets.POSTGRES_PW }}
-      POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-      PGADMIN_MAIL: ${{ secrets.PGADMIN_MAIL }}
-      PGADMIN_PW: ${{ secrets.PGADMIN_PW }}
-
     steps:
       - uses: actions/checkout@v3
-      - name: Build the Docker image
-        run: sudo docker-compose -p pg up --build -d
+      - run: |
+          docker-compose up -p pg up --build -d
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PW: ${{ secrets.POSTGRES_PW }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          PGADMIN_MAIL: ${{ secrets.PGADMIN_MAIL }}
+          PGADMIN_PW: ${{ secrets.PGADMIN_PW }}
